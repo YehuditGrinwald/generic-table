@@ -8,6 +8,14 @@ export function useGenerateColumn(columns: IColumn[]) {
   const selectOptions = ["learn", "setup"];
   const hiddenColumns = useSelector((state: IAppState) => state.hiddenColumns);
 
+  const handleChange = (
+    item: { [x: string]: any },
+    id: string,
+    value: string | number | boolean
+  ) => {
+    const updatedItem = { ...item, [id]: value };
+    dispatch(updateRowsData(updatedItem));
+  };
   return columns.map((column: IColumn) => {
     const { id, title, type, width, hide, tree } = column;
     const renderCell = (item: { [x: string]: any }) => {
@@ -20,19 +28,16 @@ export function useGenerateColumn(columns: IColumn[]) {
             <input
               type="checkbox"
               checked={item[id]}
-              onChange={(event) => {}}
+              onChange={(event) => handleChange(item, id, !item[id])}
             />
           );
         case "select":
           return (
             <select
-              onChange={(event) => {
-                const updatedItem = { ...item, [id]: event.target.value };
-                dispatch(updateRowsData(updatedItem));
-              }}
+              onChange={(event) => handleChange(item, id, event.target.value)}
             >
               {selectOptions.map((opt) => (
-                <option key={opt} selected={opt === item[id]} value={opt}>
+                <option key={opt} defaultValue={item[id]} value={opt}>
                   {opt}
                 </option>
               ))}

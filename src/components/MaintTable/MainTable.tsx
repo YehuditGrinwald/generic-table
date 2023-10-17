@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { CompactTable } from "@table-library/react-table-library/compact";
 import { useSelector } from "react-redux";
-import { IAppState, IrowData } from "../../Interfaces";
+import { IAppState } from "../../Interfaces";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
@@ -9,13 +9,13 @@ import { useGenerateColumn } from "../../hooks/useGenerateColumn";
 import Pagination from "../Pagination/Pagination";
 
 export default function MainTable() {
-  const { columns, rowsData, searchValue } = useSelector(
-    (state: IAppState) => state
-  );
+  const columns = useSelector((state: IAppState) => state.columns);
+  const rowsData = useSelector((state: IAppState) => state.rowsData);
+  const searchValue = useSelector((state: IAppState) => state.searchValue);
 
   const data = {
     nodes: useMemo(() => {
-      if (searchValue != "") {
+      if (searchValue !== "") {
         const res = rowsData.filter((row) =>
           Object.values(row).some(
             (cell) =>
