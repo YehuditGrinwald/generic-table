@@ -18,6 +18,7 @@ export function useGenerateColumn(columns: IColumn[]) {
   };
   return columns.map((column: IColumn) => {
     const { id, title, type, width, hide, tree } = column;
+    
     const renderCell = (item: { [x: string]: any }) => {
       switch (type) {
         case "string":

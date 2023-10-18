@@ -5,6 +5,7 @@ import { IAppState } from "../../Interfaces";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
+import { useTree } from "@table-library/react-table-library/tree";
 import { useGenerateColumn } from "../../hooks/useGenerateColumn";
 import Pagination from "../Pagination/Pagination";
 
@@ -46,6 +47,9 @@ export default function MainTable() {
         `,
     },
   ]);
+
+  const tree = useTree(data);
+  
   return (
     <div>
       <CompactTable
@@ -53,6 +57,7 @@ export default function MainTable() {
         data={data}
         pagination={pagination}
         theme={theme}
+        tree={tree}
       />
       <br />
       <Pagination pagination={pagination} data={data} />

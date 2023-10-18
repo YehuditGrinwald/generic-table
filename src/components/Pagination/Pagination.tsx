@@ -14,7 +14,7 @@ export default function Pagination({ pagination, data }: IPaginationProps) {
         Page:{" "}
         {pagination.state
           .getPages(data.nodes)
-          .map((_: IrowData, index: number) => (
+          .map((_: IrowData, index: number) => (//TODO:change index
             <button
               key={index}
               type="button"

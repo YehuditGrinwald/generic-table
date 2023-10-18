@@ -7,6 +7,7 @@ export const columns: IColumn[] = [
     title: "Task",
     type: "string",
     width: 15,
+    tree: true,
   },
   {
     id: "deadline",
@@ -28,7 +29,6 @@ export const columns: IColumn[] = [
     title: "Type",
     type: "select",
     width: 100,
-    tree: true,
   },
   {
     id: "priority",
