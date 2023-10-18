@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { CompactTable } from "@table-library/react-table-library/compact";
 import { useSelector } from "react-redux";
 import { IAppState } from "../../Interfaces";
@@ -13,6 +13,14 @@ export default function MainTable() {
   const columns = useSelector((state: IAppState) => state.columns);
   const rowsData = useSelector((state: IAppState) => state.rowsData);
   const searchValue = useSelector((state: IAppState) => state.searchValue);
+
+
+  useEffect(
+    function resetPagination() {
+      pagination.fns.onSetPage(0)
+    },
+    [searchValue]
+  );
 
   const data = {
     nodes: useMemo(() => {
@@ -49,7 +57,7 @@ export default function MainTable() {
   ]);
 
   const tree = useTree(data);
-  
+
   return (
     <div>
       <CompactTable
