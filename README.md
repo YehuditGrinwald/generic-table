@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Getting Started with Generic Table App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Library Dependencies
+
+This project relies on the following libraries and dependencies:
+
+- [Redux](https://redux.js.org/) - Version 4.2.1
+- [Redux Persist](https://github.com/rt2zz/redux-persist) - Version 6.0.0
+- [react-table-library](https://react-table-library.com/?path=/docs/getting-started-installation--page) - Version 4.1.7
 
 ## Available Scripts
 
