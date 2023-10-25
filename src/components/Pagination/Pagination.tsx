@@ -14,9 +14,9 @@ export default function Pagination({ pagination, data }: IPaginationProps) {
         Page:{" "}
         {pagination.state
           .getPages(data.nodes)
-          .map((_: IrowData, index: number) => (//TODO:change index
+          .map((node: IrowData, index: number) => (
             <button
-              key={index}
+              key={node.id}
               type="button"
               style={{
                 fontWeight: pagination.state.page === index ? "bold" : "normal",

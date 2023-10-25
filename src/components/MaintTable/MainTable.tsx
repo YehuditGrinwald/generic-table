@@ -17,7 +17,7 @@ export default function MainTable() {
 
   useEffect(
     function resetPagination() {
-      pagination.fns.onSetPage(0)
+      pagination.fns.onSetPage(0);
     },
     [searchValue]
   );
@@ -43,7 +43,7 @@ export default function MainTable() {
   const pagination = usePagination(data, {
     state: {
       page: 0,
-      size: 10, //number of rows to display per page
+      size: 4, //const- number of rows to display per page
     },
   });
 
